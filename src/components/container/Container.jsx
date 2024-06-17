@@ -4,6 +4,8 @@ import ToDoList from "../toDoList/ToDoList";
 import Tasks from "../tasks/Tasks";
 import Filters from "../filters/Filters";
 import { FILTERS } from "../../constants/filters";
+import Header from "../header/Header";
+import { StyledContainer, StyledTaskContainer } from "./container.styles";
 
 const Container =()=>{
     const [todoList,setTodoList]=useState([]) 
@@ -13,9 +15,17 @@ const Container =()=>{
     return (
         <>
             <div>
-                <ToDoList todoList={todoList} setTodoList={setTodoList}/>
-                <Tasks todoList={filteredTasks} setTodoList={setTodoList} />
-                <Filters todoList={todoList} filterActive={filterActive} setFilterActive={setFilterActive}/>
+                <Header/>
+                <StyledContainer>
+                   <ToDoList todoList={todoList} setTodoList={setTodoList}/>
+
+                   <StyledTaskContainer>
+                    <Tasks todoList={filteredTasks} setTodoList={setTodoList} />
+                   </StyledTaskContainer>
+                    
+                    <Filters todoList={todoList} filterActive={filterActive} setFilterActive={setFilterActive}/>  
+                </StyledContainer>
+               
             </div>
         </>
     )

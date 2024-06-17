@@ -1,12 +1,17 @@
+import { StyledCheckboxContainer, StyledContainerTask, StyledTask, StyledTaskDelete } from "./tasks.styles";
+
 const Tasks =({todoList, setTodoList})=>{
     return(
         <>
             {todoList.map(task=>(
-                <div key={task.id}>
-                    <input onChange={(event)=>completeTask(event.target.checked,todoList,setTodoList,task.id)} type="checkbox" checked={task.completed}/>
-                    <span>{task.task}</span>
-                    <button onClick={()=>deleteTask(todoList,setTodoList,task.id)}>X</button>
-                </div>
+                <StyledContainerTask key={task.id}> 
+                    <StyledCheckboxContainer>
+                       <input onChange={(event)=>completeTask(event.target.checked,todoList,setTodoList,task.id)} type="checkbox" checked={task.completed}/>
+                        <StyledTask checked={task.completed}>{task.task}</StyledTask> 
+                    </StyledCheckboxContainer>
+                    
+                    <StyledTaskDelete onClick={()=>deleteTask(todoList,setTodoList,task.id)}>X</StyledTaskDelete>
+                </StyledContainerTask>
             )
                
             )}

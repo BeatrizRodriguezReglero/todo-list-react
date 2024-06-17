@@ -1,19 +1,15 @@
 import { v4 } from "uuid";
+import { StyledForm, StyledInput } from "./todoList.styles";
 
 
 const ToDoList=({todoList,setTodoList})=>{
     return(
         <>
-            <div>
+                <StyledForm onSubmit={(event)=>handleSubmit(event,todoList,setTodoList)}>
 
-                <form onSubmit={(event)=>handleSubmit(event,todoList,setTodoList)}>
-
-                    <input type="text" name='task'/>
-                </form>
+                    <StyledInput type="text" name='task' placeholder="Create a new todo"/>
+                </StyledForm>
                 
-                
-                
-            </div>
         </>
     )
 
